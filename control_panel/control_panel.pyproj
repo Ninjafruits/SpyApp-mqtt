@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>8c17d6a7-9468-46f9-ac55-651faa718576</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>ForTest.py</StartupFile>
+    <StartupFile>designer\window.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
