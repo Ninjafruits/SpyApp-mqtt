@@ -1,11 +1,13 @@
 
+
 from PIL import Image, ImageTk
 import tkinter as tk
 from tkinter import ttk
-
+import time
 
 
 def main():
+    
     app = App_Design()
     app.mainloop()
 
@@ -17,34 +19,50 @@ class App_Design(tk.Tk): #inherit tkinter
         super().__init__() #initilize inherited
 
         #make window
-        self.title("-- Cipher --") 
+        self.title("-- Cipher --")
+        self.state('zoomed')
         #configure window -> make all rXc proportionally malleable 
         self.columnconfigure(0, weight=1)
         self.columnconfigure(1, weight=1)
         self.rowconfigure(0, weight=1)
         self.rowconfigure(1, weight=1)
 
-        #gif container 
+        #gif container
+        
+        #style = ttk.Style() #inistialize the styling of gif frame
+        #style.configure("Black.TFrame", background="black")
+        #self.gif_container = ttk.Frame(self, style="Black.TFrame") 
+
         self.gif_container = ttk.Frame(self) #dont need root since your inherited it
         self.gif_container.grid(row=0, column=0)
 
         #initalizers fr gifs
         self.handler_pic = Gif_Frame(self.gif_container, "Resource/handler.png")
-        self.handler_pic.grid(row=0, column=0)
+        self.handler_pic.grid(row=0, column=0, columnspan=2, pady=5) #allows handler to cover 2 columns
 
         self.hammer_pic = Gif_Frame(self.gif_container, "Resource/hammer.png")
-        self.hammer_pic.grid(row=1, column=0)
+        self.hammer_pic.grid(row=1, column=0, padx=5)
 
         self.wrench_pic = Gif_Frame(self.gif_container, "Resource/wrench.png")
-        self.wrench_pic.grid(row=1, column=1)
+        self.wrench_pic.grid(row=1, column=1, padx=5)
         #***************************************************************************
 
         #message frame
+        self.msg_container = ttk.Frame(self)
+        self.msg_container.grid(row=1, column=0)
+
         #***************************************************************************
+
         #terminal frame
+        self.screen_container = ttk.Frame(self)
+        self.screen_container.grid(row=0, column=1, rowspan=1)
         #***************************************************************************
         
-        #returns gif 
+    #toggles connection
+    def toggle_connection(self, file_path=""):
+        self.handler_pic.update(True, file_path)
+
+         
 class Gif_Frame(ttk.Frame): #should hold pics and light up when connected
     #takes app window argument
     def __init__(self, parent, gif_file_path): 
@@ -67,7 +85,7 @@ class Gif_Frame(ttk.Frame): #should hold pics and light up when connected
         try:
             #opens pic file
             img = Image.open(pic)
-            img = img.resize((100, 100))
+            img = img.resize((200, 200))
 
 
             #chnage to tk to use
@@ -86,7 +104,7 @@ class Gif_Frame(ttk.Frame): #should hold pics and light up when connected
         try:
             #opens pic file
             img = Image.open(pic)
-            img = img.resize((100, 100))
+            img = img.resize((200, 200))
             img = img.convert("LA") #grey scale('L') & transparency('A')
 
             #chnage to tk to use
