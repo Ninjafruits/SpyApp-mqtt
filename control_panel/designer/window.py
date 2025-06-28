@@ -1,5 +1,7 @@
+import PIL
 import tkinter as tk
 from tkinter import ttk
+
 
 
 def main():
@@ -22,7 +24,7 @@ class App(tk.Tk): #inherit tkinter
         self.rowconfigure(1, weight=1)
 
         #gif frame
-        #connection frame
+        #message frame
         #terminal frame
         
         #returns gif 
@@ -31,14 +33,23 @@ class GifFrame(ttk.Frame): #should hold pics and light up when connected
     def __init__(self, parent): 
         super().__init__(parent) #inistalize inherited
         
-
-
     #
-    def gif(self): #place and turn in grey scale gifs as default mode
-            pass
+    def gif(self, pic): #place in frame
+        """
+        Args
+            pic = str/ file path of pic
+        """
+        try:
+            #opens pic file
+            img = PIL.Image.open(pic)
+
+            #
+
+        except Exception as e:
+            print(f"Error: {e}")
     
-    #
-    def actuator(self): #if subscribers/handler connects then returns gif back to its colored version
+    #if subscribers/handler status==bool then change status==bool of gif
+    def update(self, connection_status): 
             pass
 
 class MessageFrame(ttk.Frame): #place to write messages and mannually connect bots/handlers

@@ -1,0 +1,5 @@
+Notes =====
+
+start in gif frame -> use gif function to to insert generic pic
+
+main should call the window and then call grey scale in main not window.py

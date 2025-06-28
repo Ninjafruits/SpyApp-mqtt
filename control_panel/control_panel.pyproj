@@ -34,6 +34,7 @@
     <Content Include="resource\handler.png" />
     <Content Include="resource\readme.txt" />
     <Content Include="resource\wrench.png" />
+    <Content Include="TextFile1.txt" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Mqtt\" />
