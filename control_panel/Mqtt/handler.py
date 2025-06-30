@@ -20,9 +20,14 @@ class Handler():
         self.topic = "tunnel"
 
         info = self.client.publish(self.topic, msg)
-
-        if info == 0:
+        
+        if info.rc == 0:
             print("Message in route...")
+            return True
+
+        else:
+            print("Publishing Error: Code not 0")
+            return False
 
     def connect(self): #conencts to and ctach error if it doesnt work
         try:

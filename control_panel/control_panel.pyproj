@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>8c17d6a7-9468-46f9-ac55-651faa718576</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>designer\window.py</StartupFile>
+    <StartupFile>main.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -34,7 +34,7 @@
     <Content Include="resource\handler.png" />
     <Content Include="resource\readme.txt" />
     <Content Include="resource\wrench.png" />
-    <Content Include="TextFile1.txt" />
+    <Content Include="readme.txt" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="mqtt\" />
