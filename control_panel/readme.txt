@@ -1,3 +1,7 @@
+
+Todo - 
+$ Create connect button that connects the bot (slider?)
+
 Notes =====
 
 2025/06/25
@@ -25,3 +29,14 @@ call in main and update specific windows.py gif.
 issue with text box since app_design class and class was in the same file
 - had to manually pass controller to App_design(controller=self) so then message can see it because message was in the same class as 
     app_deisgn. since main was already calling app design, calling main from app design created a loop, crashed python.
+
+2025/07/10
+-----------
+when ever we run, it is not publishign anything and broker log is not identifiying anything (code is somethng other then 0)
+ -> treid threading the handler to loop 
+
+ soltuion: 
+  -----> info.rc error 4: App_design:(which had send button to call a funct in handler) was being called before anything
+    handler was event initalized
+  -----> Accidently initalized handler twice (note line 149 in windows.py for comment), had initalized handler directly
+    in in app_design but that just skipped the handler from being connected which is required first

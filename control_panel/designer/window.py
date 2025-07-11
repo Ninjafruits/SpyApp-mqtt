@@ -1,6 +1,7 @@
 
 
 import time
+
 import tkinter as tk
 from tkinter import ttk
 from PIL import Image, ImageTk
@@ -8,10 +9,6 @@ from PIL import Image, ImageTk
 
 from Mqtt.handler import Handler
 from Mqtt.wrench import Agent_Wrench
-
-
-
-
 
 class App_Design(tk.Tk): #inherit tkinter
     def __init__(self, controller):
@@ -53,7 +50,7 @@ class App_Design(tk.Tk): #inherit tkinter
         self.msg_container = ttk.Frame(self)
         self.msg_container.grid(row=1, column=0, sticky="n")
 
-        self.msg = Message_Frame(self.msg_container, controller=self.controller)
+        self.msg = Message_Frame(self.msg_container, handler=self.controller.handler)
         self.msg.grid(row=0, column=0, pady=0, sticky="w")
         #***************************************************************************
 
@@ -135,9 +132,9 @@ class Message_Frame(ttk.Frame): #place to write messages and mannually connect b
     """
     Runs message function in __init__ then returns string to give to main
     """
-    def __init__(self, parent, controller): #takes app window argument
+    def __init__(self, parent, handler): #takes app window argument
         super().__init__(parent) #inistalize inherited
-        self.controller = controller
+        self.handler = handler #we manually passed handler from main as this classes parent so this class was "extended2"
 
         self.text = tk.Label(self, text="Connection control")
         self.text.grid(row=0, column=0, sticky="nw")
@@ -145,12 +142,13 @@ class Message_Frame(ttk.Frame): #place to write messages and mannually connect b
         self.entry = ttk.Entry(self)
         self.entry.grid(row=1, column=0, sticky="nw")
 
-        self.btn = tk.Button(self, text="Send", command=lambda: [self.on_click, self.entry.delete(0, tk.END)])
+        self.btn = tk.Button(self, text="Send", command=lambda: [self.on_click(), self.entry.delete(0, tk.END)])
         self.btn.grid(row=1, column=1, sticky="nw")
     
     def on_click(self): #takes the entry box text and sends to subscriber to use
+        #initalized handler in controller then passed to here to be able to publish
         text = self.entry.get()
-        self.controller.publish_line(text)
+        self.handler.publisher(text)
     
 
 
