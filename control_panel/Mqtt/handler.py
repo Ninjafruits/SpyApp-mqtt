@@ -12,17 +12,22 @@ class Handler():
         #initialize mqtt
         self.client = mqtt.Client(protocol=mqtt.MQTTv5)
         #to be changed once confirmed to work : Hard coded host/port
+        self.topic = "tunnel"
         self.host = "localhost"
         self.port = 1883
-        
 
-    def publish(self, msg) -> bool:
-        self.topic = "tunnel"
+    def publisher(self, msg) -> bool:
+        
 
         info = self.client.publish(self.topic, msg)
 
-        if info == 0:
+        if info.rc == 0:
             print("Message in route...")
+            return True
+
+        else:
+            print(f"Publishing Error: {info.rc}")
+            return False
 
     def connect(self): #conencts to and ctach error if it doesnt work
         try:
@@ -30,6 +35,7 @@ class Handler():
 
             if result == 0:
                 print("Handler connected..!")
+                self.client.loop_start() #required for publish to work
                 return True
             else:
                 print(f"Unsuccessful Connection Code: {result}")
@@ -39,6 +45,9 @@ class Handler():
             print(f"Error: {e}")
             return False
 
+    def looping(self):
+        print(f"Handler is listening...")
+        self.client.loop_forever() #required for publish to work
 
     def disconnect(self): #discoonects and catches error if didnt work
         try:

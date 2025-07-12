@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>8c17d6a7-9468-46f9-ac55-651faa718576</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>ForTest.py</StartupFile>
+    <StartupFile>main.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -21,12 +21,12 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="ForTest.py" />
+    <Compile Include="Resource\ForTest.py" />
     <Compile Include="designer\window.py" />
-    <Compile Include="Mqtt\hammer.py" />
+    <Compile Include="mqtt\hammer.py" />
     <Compile Include="main.py" />
-    <Compile Include="Mqtt\wrench.py" />
-    <Compile Include="Mqtt\handler.py" />
+    <Compile Include="mqtt\wrench.py" />
+    <Compile Include="mqtt\handler.py" />
     <Compile Include="resource\reference.py" />
   </ItemGroup>
   <ItemGroup>
@@ -34,9 +34,10 @@
     <Content Include="resource\handler.png" />
     <Content Include="resource\readme.txt" />
     <Content Include="resource\wrench.png" />
+    <Content Include="readme.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Mqtt\" />
+    <Folder Include="mqtt\" />
     <Folder Include="designer\" />
     <Folder Include="resource\" />
   </ItemGroup>
