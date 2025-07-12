@@ -40,3 +40,11 @@ when ever we run, it is not publishign anything and broker log is not identifiyi
     handler was event initalized
   -----> Accidently initalized handler twice (note line 149 in windows.py for comment), had initalized handler directly
     in in app_design but that just skipped the handler from being connected which is required first
+
+2025/07/11
+-----------
+add a terminal into app_design, made a text box and customized it to look like a terminal with black background and green text
+Within terminal class --> made a simplified version on print() which has write and flush fucntions:
+used sys to redirect all print() to the built-terminal as long as the declaration is called prior to print statment
+
+Lets make it look a little btter, like a scrollbar or make the terminal print better

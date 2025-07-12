@@ -21,7 +21,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="ForTest.py" />
+    <Compile Include="Resource\ForTest.py" />
     <Compile Include="designer\window.py" />
     <Compile Include="mqtt\hammer.py" />
     <Compile Include="main.py" />

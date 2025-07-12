@@ -1,6 +1,6 @@
 
 
-import time
+import sys
 
 import tkinter as tk
 from tkinter import ttk
@@ -55,8 +55,15 @@ class App_Design(tk.Tk): #inherit tkinter
         #***************************************************************************
 
         #terminal frame
-        self.screen_container = ttk.Frame(self)
+        self.screen_container = ttk.Frame(self) #make container area for terminal for one half of screen takes up 2 rows
         self.screen_container.grid(row=0, column=1, rowspan=2)
+
+        self.terminal = Terminal_Frame(self.screen_container)
+        self.terminal.pack(expand=True, fill="both")
+
+        #re-reoute all print after this declare is defined to terminal in window !!!!
+        sys.stdout = self.terminal 
+        sys.stderr = self.terminal
         #***************************************************************************
         
     #toggles gif coloring representing connection
@@ -151,9 +158,27 @@ class Message_Frame(ttk.Frame): #place to write messages and mannually connect b
         self.handler.publisher(text)
     
 
-
-
 class Terminal_Frame(ttk.Frame): #shows terminal(shows text of robots) on right half of window
     def __init__(self, parent): #takes app window argument
         super().__init__(parent) #inistalize inherited
+        #box within terminal container
+        #state = disabled *user cannot write into terminal
+        #wrap = word *how the texts go into the next line when it reaches the edge, here once word bound goes next line
+        self.text_box = tk.Text(self, wrap="word", state="disabled", bg="black", fg="lime", insertbackground="white")
+        self.text_box.pack(expand=True, fill='both')
 
+    def write(self, msg): #terminal needs the ability to write if using print() --AKA-> sys.stdout.write()
+        """here we are just defining what write does so when anytime print is called then 
+        (convert sys.stdout into terminal).write()
+        """
+        #check if msg ends with newline or not
+        if not msg.endswith("\n"):
+            msg += "\n"
+
+        self.text_box.configure(state="normal") #allow to edit text_box
+        self.text_box.insert("end", msg) #go newline and write message
+        self.text_box.see("end") #Scroll so that the end of the text is visible.
+        self.text_box.configure(state="disabled") #return to Do not allow to edit text_box
+
+    def flush(self):
+        pass #needed for sys.stdout.write() which normally has write and flush (for buffering) but we dont need to code 
