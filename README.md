@@ -1,3 +1,5 @@
+Window GUI that sends messages to the field agents using the MQTT broker communication protocol!
+
 💼 Skills Demonstrated in This Project
 _______________________________________________________________________________________
 🖥️ Python GUI Development using Tkinter and ttk
