@@ -1,29 +1,30 @@
 Skills Demonstrated in This Project
-??? Python GUI Development using Tkinter and ttk
 
-?? Custom GUI Layouts with grid and pack managers
+### Python GUI Development using Tkinter and ttk
 
-?? Real-time Terminal Output embedded in GUI via Text widget and sys.stdout redirection
+### Custom GUI Layouts with grid and pack managers
 
-?? Multithreading for concurrent MQTT event handling without blocking the GUI
+### Real-time Terminal Output embedded in GUI via Text widget and sys.stdout redirection
 
-?? MQTT Communication Protocol (paho-mqtt) for message-based agent control
+### Multithreading for concurrent MQTT event handling without blocking the GUI
 
-?? Object-Oriented Design (OOP) with clear class responsibilities and modular architecture
+### MQTT Communication Protocol (paho-mqtt) for message-based agent control
 
-??? Image Processing with PIL to dynamically update visuals (e.g. connection status)
+### Object-Oriented Design (OOP) with clear class responsibilities and modular architecture
 
-?? Controller Delegation Pattern to avoid circular imports and enable centralized control
+### Image Processing with PIL to dynamically update visuals (e.g. connection status)
 
-?? Event-Driven Programming for GUI interaction and agent response handling
+### Controller Delegation Pattern to avoid circular imports and enable centralized control
 
-?? Clean Code Structure using multiple organized files for GUI, logic, and agents
+### Event-Driven Programming for GUI interaction and agent response handling
 
-??? Debug Logging through an auto-updating in-GUI terminal
+### Clean Code Structure using multiple organized files for GUI, logic, and agents
 
-?? Scalable UI Design with resizable frames and proper widget configuration
+### Debug Logging through an auto-updating in-GUI terminal
 
-?? Documentation and Code Comments for maintainability and clarity
+### Scalable UI Design with resizable frames and proper widget configuration
+
+### Documentation and Code Comments for maintainability and clarity
 
 
 Todo - 
